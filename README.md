@@ -18,21 +18,59 @@ The file retrieved from the URL must follow this structure:
   "sync": [
     {
       "url": "https://example.com/url/to/mod.jar",
-      "name": "some-mod_name",
-      "version": "2.8.1",
+      "name": "some-mod-name",
+      "version": "anything",
       "type": "mod"
+    },
+    {
+      "url": "https://example.com/url/to/resourcepack.zip",
+      "name": "some-resourcepack-name",
+      "version": "anything",
+      "type": "resourcepack"
+    },
+    {
+      "url": "https://example.com/url/to/datapack.zip",
+      "name": "some-resourcepack-name",
+      "version": "anything",
+      "type": "datapack"
+    },
+    {
+      "url": "https://example.com/url/to/shader.zip",
+      "name": "some-shader-name",
+      "version": "anything",
+      "type": "shader"
+    },
+    {
+      "url": "https://example.com/url/to/config.zip",
+      "name": "some-config-name",
+      "version": "anything",
+      "type": "config",
+      "directory": "config/SUBDIR"
+    }
+  ],
+  "modify": [
+    {
+      "type": "remove",
+      "pattern": "^usercache\\.json$",
+      "path": "."
     }
   ]
 }
 ```
-> Add more mods/files as needed to the content array.
-> Additionally you can add 'modify' section to the file.
+> Add more enteries as needed to the `sync` and `modify` arrays as needed.
+> If you want, you can remove `modify` array entierly. Do not forget to remove comma.
+> If you want, you can remove/add any data in `sync` array, as long as section contains at least one entry. Note that data will not be removed on user PC as long as you dont explicely state removal in `modyfy`.
+> Note, that `.` directory is `.minecraft` (or whatever your directory with `server.jar` is called).
+> Note that `remove` uses ReGeX for `pattern`.
+> Beware of files been bouth in `sync` and `modify` at the same time, as there might be dragons. For best stability remove files from `sync` before `modify`-ing them. 
+
 
 ## Simple Setup Guide
 
 1. **Create the JSON File**: Use the [example schema](#example-schema-file) to create your mod list file.
-
-2. **Host the File**: Upload the JSON file to an HTTP server. You can use services like [Pastebin](https://pastebin.com) for this.
+    NOTE: You can automate creation process useing scripts in the `translators` directory of this repo.
+   
+2. **Host the File**: Upload the JSON file to an HTTP server. You can use services like [Pastebin](https://pastebin.com) or spin up your own server for this.
 
 3. **Install the Mod**: Install the _Simple Mod Sync_ mod as usual. When the game starts for the first time, it will prompt you to enter the URL of your JSON file.
 
