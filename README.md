@@ -30,7 +30,7 @@ The file retrieved from the URL must follow this structure:
     },
     {
       "url": "https://example.com/url/to/datapack.zip",
-      "name": "some-resourcepack-name",
+      "name": "some-datapack-name",
       "version": "anything",
       "type": "datapack"
     },
