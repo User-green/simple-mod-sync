@@ -78,8 +78,8 @@ The file retrieved from the URL must follow this structure:
 - Beware of files been both in `sync` and `modify` at the same time, especialy with `modyfy/remove` action. For best stability remove files from `sync` before `modify`-ing them. 
 
 - Config files must be `zip`s, containing whatever config files you want to push. 
--- Sometimes you may want to create subdirectory inside `./config/` (f.e. `config/jei/{FILES}`). HOWEVER. If you whant to sync files inside the `./config` (`./config/{FILES}`) directory, you should set `directory` to just `config`.
--- Note: The whole pathing system works like in linux, and so `./config` = `config`.
+    - Sometimes you may want to create subdirectory inside `./config/` (f.e. `config/jei/{FILES}`). HOWEVER. If you whant to sync files inside the `./config` (`./config/{FILES}`) directory, you should set `directory` to just `config`.
+    - Note: The whole pathing system works like in linux, and so `./config` = `config`.
 
 ## Simple Setup Guide
 
