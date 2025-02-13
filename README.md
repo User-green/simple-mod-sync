@@ -65,12 +65,12 @@ The file retrieved from the URL must follow this structure:
     - **BEWARE:** *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating any `remove` entries.
 
 
-- Add more enteries as needed to the `sync` and `modify` arrays as needed.
+- You can add more enteries as to the `sync` and `modify` arrays as needed.
 
 - If you want, you can remove `modify` array entierly. Do not forget to remove comma.
 
 - If you want, you can remove/add any data in `sync` array, as long as section contains at least one entry. 
-    - Note that data removed from the `sync` will not be removed on user PC as long as you dont explicely state removal in `modify`.
+    - Note, that data removed from the `sync` array will **not** be removed from user’s PC as long as, you don’t explicetly remove it with `remove` entry in the `modify` array.
 
 - Note, that `.` (current directory) is `.minecraft` (or whatever your directory with `server.jar` is called).
 
