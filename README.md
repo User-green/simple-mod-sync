@@ -61,13 +61,14 @@ The file retrieved from the URL must follow this structure:
 
 > If you want, you can remove `modify` array entierly. Do not forget to remove comma.
 
-> If you want, you can remove/add any data in `sync` array, as long as section contains at least one entry. Note that data will not be removed on user PC as long as you dont explicely state removal in `modyfy`.
+> If you want, you can remove/add any data in `sync` array, as long as section contains at least one entry. 
+> Note that data will not be removed on user PC as long as you dont explicely state removal in `modify`.
 
-> Note, that `.` directory is `.minecraft` (or whatever your directory with `server.jar` is called).
+> Note, that `.` (current directory) is `.minecraft` (or whatever your directory with `server.jar` is called).
 
 > Note that `remove` uses ReGeX for `pattern`.
 
-> Beware of files been bouth in `sync` and `modify` at the same time, as there might be dragons. For best stability remove files from `sync` before `modify`-ing them. 
+> Beware of files been both in `sync` and `modify` at the same time, as there might be dragons. For best stability remove files from `sync` before `modify`-ing them. 
 
 
 ## Simple Setup Guide
