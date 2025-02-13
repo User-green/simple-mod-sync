@@ -58,12 +58,13 @@ The file retrieved from the URL must follow this structure:
 }
 ```
 
+**WARNING:** Avoid multiple entries bouth of wich have same `name` and `type`! 
+
 ### Notes
 - **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
     - Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
     - If you have to change mod `name` make shore that you add its old `name` to the `modify` as `remove` entry. 
     - **BEWARE:** *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating any `remove` entries.
-
 
 - You can add more enteries as to the `sync` and `modify` arrays as needed.
 
@@ -99,13 +100,35 @@ The file retrieved from the URL must follow this structure:
 
 SimpleModSync works without creating any aditional files (metadata), and so all data is stored in the mod filename.
 This means that any `mods\resourcepack\datapack\shader`'s name will be built with following structure: `[contentName]-[contentVersion].[extension]`.
-In said structure `[contentName]` equils `name` used in JSON, `[contentVersion]` - to the `version` used in JSON, and `[extention]` selected automaticly, based on `type` in JSON (`jar` for `mod`, `zip` for everythig else).
 
-The only exeptin to this rule are `config`s, where `.zip` file is unziped into selected directory. There, metadata is created. Said metadata is located at `./[path]/sms_[contentName]-[contentVersion].json`, and contains anmes of all files extracted from arcive.
-(`[path]` = JSON's `directory`, `[contentName]` = JSON's `name`, and `[contentVersion]` = JSON's `version`)
 
-For any type of entry in `sync` ANY difference detected between `[contentVersion]` and JSON's `version` for a file wich `[contentName]` maches `name`, will cause new be, and old file - removed. 
-For `config` arcives -- all contents of the old `config.zip` will be removed before new `config.zip` will be unziped. This will not effect files with different `path`es.
+In said structure:
+- `[contentName]` equil to the `name` wich is defined in the remote JSON. 
+- `[contentVersion]` equil to the `version`, wich is defined in the remote JSON. 
+- `[extention]` is selected automaticly, based on `type` wich id defined in the remote JSON (`jar` for `mod`, `zip` for everythig else).
+
+
+The only exeptin to the rules above are `config`’s, where `.zip` files are unziped into selected directory. 
+There, metadata is created. Said metadata is always located at `./[path]/sms_[contentName]-[contentVersion].json` file.
+
+In this file structure:
+- `[contentName]` equil to the `name` wich is defined in the remote JSON. 
+- `[contentVersion]` equil to the `version`, wich is defined in the remote JSON. 
+- `[path]` equil to the `directory` wich is defined in the remote JSON. 
+
+Each configuration metadata file contain names of all files that have been extracted from corresponding `.zip` file. 
+Any damage (remaneing, structure disruption) to the metadata file will cause *Simple Mod Sync* loseing track of all files referenced.
+
+
+Finaly, *Symple Mod Sync* applies folowing syncronisation rules:
+
+- If file’s `[contentName]` matches `name` defined in a remote JSON entry, than file is concidered to be the file referenced in the entry. 
+    - Note: Multiple matches are an edgecase and will cause problems. 
+
+- If ANY difference between `[contentVersion]` and JSON's `version` of the same entry are detected, affected file(s) to be eraced localy and redownloaded from the remote server. 
+
+- If any `config` arcives are to be updated, all contents of the old `config.zip` will be removed before new `config.zip` will be unziped. 
+
 
 ## For Developers
 
