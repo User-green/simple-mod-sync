@@ -57,6 +57,13 @@ The file retrieved from the URL must follow this structure:
   ]
 }
 ```
+
+### Notes
+> **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
+> Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
+> If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described here. Take this into a count when creating `remove` entries.
+
+
 > Add more enteries as needed to the `sync` and `modify` arrays as needed.
 
 > If you want, you can remove `modify` array entierly. Do not forget to remove comma.
@@ -68,8 +75,11 @@ The file retrieved from the URL must follow this structure:
 
 > Note that `remove` uses ReGeX for `pattern`.
 
-> Beware of files been both in `sync` and `modify` at the same time, as there might be dragons. For best stability remove files from `sync` before `modify`-ing them. 
+> Beware of files been both in `sync` and `modify` at the same time, especialy with `modyfy/remove` action. For best stability remove files from `sync` before `modify`-ing them. 
 
+> Config files must be `zip`s, containing whatever config files you want to push. 
+> Sometimes you may want to create subdirectory inside `./config/` (f.e. `config/jei/{FILES}`). HOWEVER. If you whant to sync files inside the `./config` (`./config/{FILES}`) directory, you should set `directory` to just `config`.
+> Note: The whole pathing system works like in linux, and so `./config` = `config`.
 
 ## Simple Setup Guide
 
@@ -83,6 +93,12 @@ The file retrieved from the URL must follow this structure:
 4. **Monitor Synchronization**: Once the URL is set, the mod synchronization status will be visible in the top-left corner of the title screen.
 
 - To change the URL later, simply update the `download_url` setting in the config file or in the synced mods menu.
+
+## Tecnical deatails
+
+SimpleModSync works without creating any aditional files (metadata), and so all data is stored in the mod filename.
+This means that any `mods\resourcepack\datapack\shader`'s name will be built with following structure: `[contentName]-[contentVersion].[extension]`.
+In said structure `contentName` equils string used in JSON. 
 
 ## For Developers
 
