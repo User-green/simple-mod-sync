@@ -1,4 +1,4 @@
-# Simple Mod Sync
+/# Simple Mod Sync
 
 A lightweight mod for synchronizing game mods via a URL-based schema.
 
@@ -62,7 +62,7 @@ The file retrieved from the URL must follow this structure:
 - **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
     - Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
     - If you have to change mod `name` make shore that you add its old `name` to the `modify` as `remove` entry. 
-          - **BEWARE:** *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating any `remove` entries.
+    - **BEWARE:** *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating any `remove` entries.
 
 
 - Add more enteries as needed to the `sync` and `modify` arrays as needed.
