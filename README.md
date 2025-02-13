@@ -60,8 +60,10 @@ The file retrieved from the URL must follow this structure:
 
 ### Notes
 - **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
- -- Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
- -- If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating `remove` entries.
+
+- - Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
+
+- - If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating `remove` entries.
 
 
 - Add more enteries as needed to the `sync` and `modify` arrays as needed.
