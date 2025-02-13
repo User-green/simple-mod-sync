@@ -59,27 +59,27 @@ The file retrieved from the URL must follow this structure:
 ```
 
 ### Notes
-> **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
-> Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
-> If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating `remove` entries.
+- **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
+-- Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
+-- If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating `remove` entries.
 
 
-> Add more enteries as needed to the `sync` and `modify` arrays as needed.
+- Add more enteries as needed to the `sync` and `modify` arrays as needed.
 
-> If you want, you can remove `modify` array entierly. Do not forget to remove comma.
+- If you want, you can remove `modify` array entierly. Do not forget to remove comma.
 
-> If you want, you can remove/add any data in `sync` array, as long as section contains at least one entry. 
-> Note that data will not be removed on user PC as long as you dont explicely state removal in `modify`.
+- If you want, you can remove/add any data in `sync` array, as long as section contains at least one entry. 
+-- Note that data will not be removed on user PC as long as you dont explicely state removal in `modify`.
 
-> Note, that `.` (current directory) is `.minecraft` (or whatever your directory with `server.jar` is called).
+- Note, that `.` (current directory) is `.minecraft` (or whatever your directory with `server.jar` is called).
 
-> Note that `remove` uses ReGeX for `pattern`.
+- Note that `remove` uses ReGeX for `pattern`.
 
-> Beware of files been both in `sync` and `modify` at the same time, especialy with `modyfy/remove` action. For best stability remove files from `sync` before `modify`-ing them. 
+- Beware of files been both in `sync` and `modify` at the same time, especialy with `modyfy/remove` action. For best stability remove files from `sync` before `modify`-ing them. 
 
-> Config files must be `zip`s, containing whatever config files you want to push. 
-> Sometimes you may want to create subdirectory inside `./config/` (f.e. `config/jei/{FILES}`). HOWEVER. If you whant to sync files inside the `./config` (`./config/{FILES}`) directory, you should set `directory` to just `config`.
-> Note: The whole pathing system works like in linux, and so `./config` = `config`.
+- Config files must be `zip`s, containing whatever config files you want to push. 
+-- Sometimes you may want to create subdirectory inside `./config/` (f.e. `config/jei/{FILES}`). HOWEVER. If you whant to sync files inside the `./config` (`./config/{FILES}`) directory, you should set `directory` to just `config`.
+-- Note: The whole pathing system works like in linux, and so `./config` = `config`.
 
 ## Simple Setup Guide
 
