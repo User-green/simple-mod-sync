@@ -61,7 +61,7 @@ The file retrieved from the URL must follow this structure:
 ### Notes
 > **IMPORTANT:** Entries in `sync` will be replaced on user PC if `version` changes IN ANY WAY.
 > Aditionaly, if `name` changes, than NEW FILE will be downloaded, WIHOUT removeing old one.
-> If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described here. Take this into a count when creating `remove` entries.
+> If you have to change mod `name` make shore that you add its old `name` to the `modify` is `remove` entry. **HOWEVER**, beware that *Simple Mod Sync* modifies filename as described [here](https://github.com/oxydien/simple-mod-sync?tab=readme-ov-file#tecnical-deatails). Take this into a count when creating `remove` entries.
 
 
 > Add more enteries as needed to the `sync` and `modify` arrays as needed.
@@ -98,7 +98,13 @@ The file retrieved from the URL must follow this structure:
 
 SimpleModSync works without creating any aditional files (metadata), and so all data is stored in the mod filename.
 This means that any `mods\resourcepack\datapack\shader`'s name will be built with following structure: `[contentName]-[contentVersion].[extension]`.
-In said structure `contentName` equils string used in JSON. 
+In said structure `[contentName]` equils `name` used in JSON, `[contentVersion]` - to the `version` used in JSON, and `[extention]` selected automaticly, based on `type` in JSON (`jar` for `mod`, `zip` for everythig else).
+
+The only exeptin to this rule are `config`s, where `.zip` file is unziped into selected directory. There, metadata is created. Said metadata is located at `./[path]/sms_[contentName]-[contentVersion].json`, and contains anmes of all files extracted from arcive.
+(`[path]` = JSON's `directory`, `[contentName]` = JSON's `name`, and `[contentVersion]` = JSON's `version`)
+
+For any type of entry in `sync` ANY difference detected between `[contentVersion]` and JSON's `version` for a file wich `[contentName]` maches `name`, will cause new be, and old file - removed. 
+For `config` arcives -- all contents of the old `config.zip` will be removed before new `config.zip` will be unziped. This will not effect files with different `path`es.
 
 ## For Developers
 
