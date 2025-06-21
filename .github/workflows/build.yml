@@ -4,7 +4,7 @@
 # against bad commits.
 
 name: build
-on: [Manual trigger]
+on: [manual_trigger]
 
 jobs:
   build:
