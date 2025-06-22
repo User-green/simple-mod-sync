@@ -404,7 +404,7 @@ public class ModDownloadWorker implements Runnable {
 
         List<String> relativeMatches = new ArrayList<>();
         for (String match : matchData) {
-            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString()+"/";
+            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString()+"\\";
             relativeMatches.add(relativePath);
         }
 
