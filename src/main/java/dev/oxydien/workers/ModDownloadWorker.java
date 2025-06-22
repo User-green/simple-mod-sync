@@ -404,7 +404,7 @@ public class ModDownloadWorker implements Runnable {
 
         List<String> relativeMatches = new ArrayList<>();
         for (String match : matchData) {
-            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString()+"\\";
+            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString();
             relativeMatches.add(relativePath);
         }
 
@@ -435,7 +435,7 @@ public class ModDownloadWorker implements Runnable {
                         assert modification.getResult() != null;
                         var targetFile = Path.of(match);
                         var parent = targetFile.getParent();
-                        Files.move(targetFile, Path.of(parent + "/" + modification.getResult()));
+                        Files.move(targetFile, Path.of(parent + "/" + modification.getResult() + "/"));
                     } catch (IOException e) {
                         Log.Log.error("bw.runModification.move.IOException","Failed to move file", e);
                     }
