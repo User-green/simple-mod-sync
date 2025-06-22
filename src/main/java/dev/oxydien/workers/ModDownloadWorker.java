@@ -423,7 +423,7 @@ public class ModDownloadWorker implements Runnable {
             case REMOVE:
                 for (var match : matches) {
                     try {
-                        Files.delete(Path.of(match));
+                        Files.delete(Path.of(match)+"/");
                     } catch (IOException e) {
                         Log.Log.error("bw.runModification.delete.IOException","Failed to delete file", e);
                     }
