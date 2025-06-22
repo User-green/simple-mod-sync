@@ -413,8 +413,8 @@ public class ModDownloadWorker implements Runnable {
         for (var filePath : relativeMatches) {
             var matcher = pattern.matcher(filePath);
             if (matcher.matches()) {
-                matches.add(filePath + "/");
-                Log.Log.debug("bw.runModification", "Found match for {} at {}", modification.getPattern(), filePath);
+                matches.add(Path.of(workingDirectory + "/" + filePath));
+                Log.Log.debug("bw.runModification", "Found match for {} at {}", modification.getPattern(), (workingDirectory + "/" + filePath));
                 break;
             }
         }
@@ -423,7 +423,7 @@ public class ModDownloadWorker implements Runnable {
             case REMOVE:
                 for (var match : matches) {
                     try {
-                        Files.delete(Path.of(match));
+                        Files.delete(match);
                     } catch (IOException e) {
                         Log.Log.error("bw.runModification.delete.IOException","Failed to delete file", e);
                     }
