@@ -404,7 +404,7 @@ public class ModDownloadWorker implements Runnable {
 
         List<String> relativeMatches = new ArrayList<>();
         for (String match : matchData) {
-            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString();
+            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString()+"/";
             relativeMatches.add(relativePath);
         }
 
@@ -423,7 +423,7 @@ public class ModDownloadWorker implements Runnable {
             case REMOVE:
                 for (var match : matches) {
                     try {
-                        Files.delete(Path.of(match)+"/");
+                        Files.delete(Path.of(match));
                     } catch (IOException e) {
                         Log.Log.error("bw.runModification.delete.IOException","Failed to delete file", e);
                     }
