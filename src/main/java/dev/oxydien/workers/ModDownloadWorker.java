@@ -404,7 +404,7 @@ public class ModDownloadWorker implements Runnable {
 
         List<String> relativeMatches = new ArrayList<>();
         for (String match : matchData) {
-            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString()  + "/";
+            String relativePath = Path.of(workingDirectory).relativize(Path.of(match)).toString();
             relativeMatches.add(relativePath);
         }
 
@@ -413,7 +413,7 @@ public class ModDownloadWorker implements Runnable {
         for (var filePath : relativeMatches) {
             var matcher = pattern.matcher(filePath);
             if (matcher.matches()) {
-                matches.add(filePath);
+                matches.add(filePath + "/");
                 Log.Log.debug("bw.runModification", "Found match for {} at {}", modification.getPattern(), filePath);
                 break;
             }
