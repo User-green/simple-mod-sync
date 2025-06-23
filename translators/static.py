@@ -28,7 +28,7 @@ Usage:
 # Edit this part if needed.
 
 # Base path of the content where it will be hosted
-url_base_path = "https://update.tslp.eu.org"
+url_base_path = "https://exaple.com/"
 
 # List of directories to parse
 working_directories = ["./client_mods/", "./mods/"]
